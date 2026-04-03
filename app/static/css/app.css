@@ -1,3 +1,170 @@
 body {
     padding-top: 5rem;
+    background-color: #f5f5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===========================
+   Navbar
+=========================== */
+.navbar {
+    background-color: #26c6b0 !important;
+}
+ 
+.navbar-brand {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+ 
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 0.9rem;
+}
+ 
+.navbar-nav .nav-link:hover {
+    color: #ffffff !important;
+}
+ 
+/* ===========================
+   Add New Property Form
+=========================== */
+.form-card {
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 2rem;
+}
+ 
+.form-control:focus,
+.form-select:focus {
+    border-color: #26c6b0;
+    box-shadow: 0 0 0 0.2rem rgba(38, 198, 176, 0.25);
+}
+ 
+.btn-teal {
+    background-color: #26c6b0;
+    color: #ffffff;
+    border: none;
+}
+ 
+.btn-teal:hover {
+    background-color: #1fa898;
+    color: #ffffff;
+}
+ 
+/* ===========================
+   Properties List Page
+=========================== */
+.property-card {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #ffffff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+ 
+.property-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+ 
+.property-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+ 
+.property-card .card-body {
+    padding: 1rem;
+}
+ 
+.property-card .card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+ 
+.property-card .card-location {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
+ 
+.badge-price {
+    background-color: #26c6b0;
+    color: #ffffff;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    display: inline-block;
+}
+ 
+.btn-view {
+    background-color: #26c6b0;
+    color: #ffffff;
+    border: none;
+    width: 100%;
+    padding: 0.6rem;
+    font-weight: 500;
+    border-radius: 0;
+}
+ 
+.btn-view:hover {
+    background-color: #1fa898;
+    color: #ffffff;
+}
+ 
+/* ===========================
+   Property Detail Page
+=========================== */
+.detail-card {
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    overflow: hidden;
+}
+ 
+.detail-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-height: 420px;
+}
+ 
+.badge-detail-price {
+    background-color: #f0a500;
+    color: #ffffff;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+ 
+.badge-detail-type {
+    background-color: #f07800;
+    color: #ffffff;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    display: inline-block;
+}
+ 
+.detail-meta {
+    color: #6c757d;
+    font-size: 0.95rem;
+}
+ 
+.btn-email {
+    background-color: #26c6b0;
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 4px;
+    font-weight: 500;
+}
+ 
+.btn-email:hover {
+    background-color: #1fa898;
+    color: #ffffff;
 }
