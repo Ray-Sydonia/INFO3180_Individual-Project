@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 
+{% block css %}{% endblock %}
+
 {% block main %}
-<h1 class="display-5 fw-bold">About</h1>
-<p>This webpage is about {{ name }}.</p>
+<div class="about-hero">
+    <div class="about-content">
+        <h1>About</h1>
+        <p>{{ name }} has created this webpage just for you to find your dream home/apartment.</p>
+    </div>
+</div>
 {% endblock %}
+
+{% block js %}{% endblock %}
