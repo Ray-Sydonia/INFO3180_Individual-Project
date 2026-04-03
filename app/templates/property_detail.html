@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}{{ property.title }} | Project 1{% endblock %}
+
+{% block main %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow-sm border-0">
+                <div class="row g-0">
+
+                    <div class="col-md-5">
+                        <img
+                            src="{{ url_for('get_image', filename=property.photo) }}"
+                            class="img-fluid rounded-start h-100"
+                            alt="{{ property.title }}"
+                            style="object-fit: cover; max-height: 420px; width: 100%;"
+                        >
+                    </div>
+
+                    <div class="col-md-7">
+                        <div class="card-body p-4">
+                            <h4 class="fw-bold mb-3">{{ property.title }}</h4>
+
+                            <div class="mb-3">
+                                <span class="badge me-2 px-3 py-2" style="background-color: #f0a500; font-size: 0.9rem;">
+                                    ${{ "{:,.0f}".format(property.price) }}
+                                </span>
+                                <span class="badge px-3 py-2" style="background-color: #f07800; font-size: 0.9rem;">
+                                    {{ property.property_type }}
+                                </span>
+                            </div>
+
+                            <p class="text-muted mb-4" style="line-height: 1.6;">{{ property.description }}</p>
+
+                            <div class="d-flex gap-4 mb-3">
+                                <span>
+                                    <i class="bi bi-door-open me-1 text-secondary"></i>
+                                    {{ property.no_of_rooms }} Bedroom{{ 's' if property.no_of_rooms != 1 else '' }}
+                                </span>
+                                <span>
+                                    <i class="bi bi-water me-1 text-secondary"></i>
+                                    {{ property.no_of_bathrooms }} Bathroom{{ 's' if property.no_of_bathrooms != 1 else '' }}
+                                </span>
+                            </div>
+
+                            <p class="mb-4">
+                                <i class="bi bi-geo-alt me-1 text-secondary"></i>
+                                {{ property.location }}
+                            </p>
+
+                            <a href="#" class="btn text-white px-4" style="background-color: #26c6b0;">
+                                Email Realtor
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}{% endblock %}

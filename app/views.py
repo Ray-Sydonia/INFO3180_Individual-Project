@@ -5,8 +5,12 @@ Werkzeug Documentation:  https://werkzeug.palletsprojects.com/
 This file contains the routes for your application.
 """
 
-from app import app
-from flask import render_template, request, redirect, url_for
+import os
+from app import app, db
+from flask import render_template, request, redirect, url_for, flash, send_from_directory
+from werkzeug.utils import secure_filename
+from app.models import Property
+from app.forms import PropertyForm
 
 
 ###
@@ -22,7 +26,63 @@ def home():
 @app.route('/about/')
 def about():
     """Render the website's about page."""
-    return render_template('about.html', name="Mary Jane")
+    return render_template('about.html', name="Rayna Jarrett")
+
+
+@app.route('/properties/create', methods=['GET', 'POST'])
+def create_property():
+    """Display form to add a new property and handle submission."""
+    form = PropertyForm()
+ 
+    if form.validate_on_submit():
+        # Handle file upload
+        photo = form.photo.data
+        filename = secure_filename(photo.filename)
+ 
+        upload_path = app.config['UPLOAD_FOLDER']
+        os.makedirs(upload_path, exist_ok=True)
+        photo.save(os.path.join(upload_path, filename))
+ 
+        # Save property to database
+        price_str = str(form.price.data).replace(',', '')
+        new_property = Property(
+            title=form.title.data,
+            description=form.description.data,
+            no_of_rooms=form.no_of_rooms.data,
+            no_of_bathrooms=form.no_of_bathrooms.data,
+            price=price_str,
+            property_type=form.property_type.data,
+            location=form.location.data,
+            photo=filename
+        )
+ 
+        db.session.add(new_property)
+        db.session.commit()
+ 
+        flash('Property was successfully added!', 'success')
+        return redirect(url_for('properties'))
+ 
+    return render_template('create_property.html', form=form)
+ 
+ 
+@app.route('/properties')
+def properties():
+    """Display a list of all properties."""
+    all_properties = Property.query.all()
+    return render_template('properties.html', properties=all_properties)
+ 
+ 
+@app.route('/properties/<int:propertyid>')
+def property_detail(propertyid):
+    """Display details for a specific property."""
+    prop = Property.query.get_or_404(propertyid)
+    return render_template('property_detail.html', property=prop)
+ 
+ 
+@app.route('/uploads/<filename>')
+def get_image(filename):
+    """Serve uploaded property images."""
+    return send_from_directory(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER']), filename)
 
 
 ###
